@@ -1,0 +1,13 @@
+alert http any any -> any 8090 (msg:"X-Bank-Role"; flow:to_server,established; http.header_names; content:"X-Bank-Role"; nocase; sid:1000001; rev:2;)
+alert http any any -> any 8090 (msg:"/etc/passwd"; flow:to_server,established; http.uri; content:"/etc/passwd"; nocase; sid:1000002; rev:3;)
+alert http any any -> any 8090 (msg:"SQLi"; flow:to_server,established; http.uri; content:"'"; nocase; sid:1000003; rev:1;)
+alert http any any -> any 8090 (msg:"SQLi"; flow:to_server,established; http.uri; content:"union"; nocase; sid:1000004; rev:1;)
+alert http any any -> any 8090 (msg:"SQLi"; flow:to_server,established; http.uri; content:"1=1"; nocase; sid:1000005; rev:1;)
+alert http any any -> any 8090 (msg:"Command injection"; flow:to_server,established; http.method; content:"POST"; http.uri; content:"/support"; http.request_body; content:"%24%28"; classtype:web-application-attack; sid:1000215; rev:2;)
+alert http any any -> any 8090 (msg:"Command injection"; flow:to_server,established; http.method; content:"POST"; http.uri; content:"/support"; http.request_body; content:"%60"; classtype:web-application-attack; sid:1000216; rev:2;)
+alert http any any -> any 8090 (msg:"Command injection"; flow:to_server,established; http.method; content:"POST"; http.uri; content:"/support"; http.request_body; content:"%7C"; classtype:web-application-attack; sid:1000217; rev:2;)
+alert http any any -> any 8090 (msg:"Command injection"; flow:to_server,established; http.method; content:"POST"; http.uri; content:"/support"; http.request_body; content:"%26"; classtype:web-application-attack; sid:1000218; rev:2;)
+alert http any any -> any 8090 (msg:"Command injection"; flow:to_server,established; http.method; content:"POST"; http.uri; content:"/support"; http.request_body; content:"%3B"; classtype:web-application-attack; sid:1000219; rev:2;)
+alert http any any -> any 8090 (msg:"Stored XSS"; flow:to_server,established; http.method; content:"POST"; http.uri; content:"/profile"; http.request_body; content:"<"; classtype:web-application-attack; sid:1000225; rev:2;)
+alert http any any -> any 8090 (msg:"Stored XSS"; flow:to_server,established; http.method; content:"POST"; http.uri; content:"/profile"; http.request_body; content:"%3C"; classtype:web-application-attack; sid:1000226; rev:2;)
+

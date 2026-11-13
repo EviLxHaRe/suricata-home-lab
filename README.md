@@ -2,7 +2,7 @@
 # Разворачиваем web сайт и установка suricata
 Для начало развернем web сайт и проверим как работуют уязвимости. А так же установим suricata, если ее нету.
 ```bash
-https://github.com/GUFFYch/hacks4bugs_bank.git # скачиваем web site
+https://github.com/GUFFYch/hacks4bugs_bank.git # сайт с уязвимостями 
 cd hacks4bugs_bank 
 pip install -r requirements.txt # установка нужных библиотек
 python3 bank.py # слушает 8090 порт
